@@ -22,19 +22,16 @@ public class View implements InventoryHolder {
     @Getter
     private final List<Button> buttons = new ArrayList<>();
 
-    // Criar o inventário
-    public void create(String name, int size) {
+    public void createInventory(String name, int size) {
         inventory = Bukkit.createInventory(null, size, name);
     }
 
-   // Adicionar um botão ao inventário
     public void setButton(Button button) {
         inventory.setItem(button.getSlot(), button.getIcon());
         buttons.add(button);
     }
 
-    // Registra o inventário
-    public void register(JavaPlugin javaPlugin) {
+    public void registerListener(JavaPlugin javaPlugin) {
         Bukkit.getPluginManager().registerEvents(new Listener() {
 
             public void onClick(InventoryClickEvent event) {
@@ -51,6 +48,7 @@ public class View implements InventoryHolder {
                 if (item == null || item.getType() == Material.AIR) {
                     return;
                 }
+                
                 for (Button button : buttons) {
                     if (button.getSlot() == event.getSlot()) {
                         button.getAction().accept(player);
