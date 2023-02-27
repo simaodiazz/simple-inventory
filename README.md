@@ -22,7 +22,7 @@ public class Example extends JavaPlugin {
         view.register(this);
         
         Bukkit.getOnlinePlayers().forEach(player -> {
-            
+            player.openInventory(view.getInventory());
         });
     }
 }
