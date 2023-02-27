@@ -13,13 +13,10 @@ import java.util.function.Consumer;
 @Data
 public class Button {
 
-    // Item que vai ser apresentado
     private ItemStack icon;
 
-    // Slot onde o item vai ser apresentado
     private int slot;
 
-    // Ação do jogador
     private Consumer<Player> action;
 
 }
